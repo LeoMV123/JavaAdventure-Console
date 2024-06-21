@@ -16,8 +16,6 @@ public class Character {
         weapon = new Weapon();
         potion = new Potion();
     }
-    
-    
 
     public Character(String name, int healthPoints, int pointsOfAttack, Weapon weapon, Potion potion) {
         this.name = name;
@@ -32,7 +30,7 @@ public class Character {
         healthPoints -= totalDamage;
     }
     
-    public int doDamage(Weapon weapon){
+    public int doDamage(){
         return pointsOfAttack + weapon.getDamage();
     }
     
@@ -45,7 +43,7 @@ public class Character {
         }
     }
     
-    public void takePotion(Potion potion){
+    public void drinkPotion(){
         healthPoints += potion.getHealthPoints();
         
         if(healthPoints > HEALTH_POINTS){
@@ -53,6 +51,14 @@ public class Character {
         }
         
         potion.decreaseNumbers();
+    }
+    
+    public void showStats(){
+        System.out.println("Name: " + getName());
+        System.out.println("Weapon: " + weapon.getName());
+        System.out.println("Total damage: " + doDamage());
+        System.out.println("Number of healing potion: " + potion.getNumbers());
+        System.out.println("Health points: " + getHealthPoints());
     }
 
     public String getName() {
